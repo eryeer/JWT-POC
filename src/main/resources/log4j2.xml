@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--设置log4j2的自身log级别为warn -->
+<configuration status="warn">
+    <properties>
+        <Property name="LOG_PATH">DNA_Explorer</Property>
+        <property name="APPDIR" value="log"/>
+        <property name="APPNAME" value="Explorer"/>
+    </properties>
+    <CustomLevels>
+        <CustomLevel name="OPER" intLevel="150"/>
+    </CustomLevels>
+    <appenders>
+        <console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d] [%t] [%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-B3-ParentSpanId},%X{X-Span-Export}] [%p] [hostAddress:${sys:hostAddress}] [%l] %m%n" />
+        </console>
+    </appenders>
+
+    <loggers>
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+        </root>
+        <logger name="com.onchain.mapper" level="INFO">
+            <appender-ref ref="STDOUT" />
+        </logger>
+    </loggers>
+
+</configuration>
