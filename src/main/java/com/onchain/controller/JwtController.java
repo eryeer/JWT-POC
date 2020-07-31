@@ -42,9 +42,9 @@ public class JwtController {
      */
     @PostMapping("/register")
     public ResponseFormat register(@RequestBody RequestRegister requestRegister) {
-        ResponseFormat<Boolean> rsp = new ResponseFormat<>(2000);
-        Boolean ret = jwtService.register(requestRegister);
-        rsp.setData(ret);
+        ResponseFormat<Long> rsp = new ResponseFormat<>(2000);
+        Long userId = jwtService.register(requestRegister);
+        rsp.setData(userId);
         return rsp;
     }
 

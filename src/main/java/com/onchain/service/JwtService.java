@@ -44,14 +44,14 @@ public class JwtService {
         return jwtMapper.getUserByPhoneNumber(phoneNumber);
     }
 
-    public Boolean register(RequestRegister requestRegister) {
+    public Long register(RequestRegister requestRegister) {
         User user = new User();
         user.setName(requestRegister.getName());
         user.setPassword(requestRegister.getPassword());
         user.setPhoneNumber(requestRegister.getPhoneNumber());
         user.setAuthority("[]");
         jwtMapper.insertUser(user);
-        return true;
+        return user.getId();
     }
 
     public String createToken(String userId, String ttype) {
